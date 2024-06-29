@@ -1,0 +1,139 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_PRISMA_URL")
+}
+
+model user {
+  id          Int         @id @default(autoincrement())
+  username    String      @unique
+  password    String
+  ruolo       Ruolo
+  statoAttivo Boolean     @default(true)
+  nome        String?
+  cognome     String?
+  ristorante  Ristorante?
+}
+
+model Ristorante {
+  id              Int                @id @default(autoincrement())
+  nome            String
+  orariDiApertura OrarioDiApertura[]
+  ragioneSociale  String
+  piva            Int
+  via             String
+  cap             Int
+  comune          String
+  provincia       String
+  stato           String
+  codiceSdi       String?
+  pec             String?
+  Tavolo          Tavolo[]
+  Cliente         Cliente[]
+  user            user               @relation(fields: [userId], references: [id])
+  userId          Int                @unique
+  AreaCompentenza AreaCompentenza[]
+}
+
+model AreaCompentenza {
+  id               Int                @id @default(autoincrement())
+  nome             String
+  CateogorieOnAree CateogorieOnAree[]
+  ristorante       Ristorante         @relation(fields: [ristoranteId], references: [id])
+  ristoranteId     Int
+}
+
+model Categoria {
+  id               Int                @id @default(autoincrement())
+  nome             String
+  Pietanza         Pietanza[]
+  CateogorieOnAree CateogorieOnAree[]
+}
+
+model CateogorieOnAree {
+  categoria         Categoria       @relation(fields: [categoriaId], references: [id])
+  categoriaId       Int
+  area              AreaCompentenza @relation(fields: [areaCompentenzaId], references: [id])
+  areaCompentenzaId Int
+
+  @@id([categoriaId, areaCompentenzaId])
+}
+
+model Pietanza {
+  id          Int       @id @default(autoincrement())
+  nome        String
+  descrizione String
+  prezzo      Float
+  etichetta   String?
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId Int
+}
+
+model Cliente {
+  id           Int            @id @default(autoincrement())
+  nome         String
+  cognome      String
+  telefono     Int            @unique
+  email        String         @unique
+  dataNascita  DateTime?
+  consenso     Boolean        @default(false)
+  Prenotazione Prenotazione[]
+  ristorante   Ristorante     @relation(fields: [ristoranteId], references: [id])
+  ristoranteId Int
+}
+
+model Prenotazione {
+  id               Int      @id @default(autoincrement())
+  copertiAdulti    Int
+  copertiBambini   Int
+  data             DateTime
+  allergie         String?
+  numeroPasseggini Int?
+  numeroSeggiolini Int?
+  occasioneVisita  String?
+  cliente          Cliente  @relation(fields: [clienteId], references: [id])
+  clienteId        Int
+  tavolo           Tavolo   @relation(fields: [tavoloId], references: [id])
+  tavoloId         Int
+}
+
+model Tavolo {
+  id           Int            @id @default(autoincrement())
+  nome         String
+  capienza     Int
+  ristorante   Ristorante     @relation(fields: [ristoranteId], references: [id])
+  ristoranteId Int
+  Prenotazione Prenotazione[]
+}
+
+model OrarioDiApertura {
+  id           Int        @id @default(autoincrement())
+  giorno       Giorno
+  orario       DateTime[]
+  Ristorante   Ristorante @relation(fields: [ristoranteId], references: [id])
+  ristoranteId Int
+}
+
+enum Giorno {
+  LUN
+  MAR
+  MER
+  GIO
+  VEN
+  SAB
+  DOM
+}
+
+enum Ruolo {
+  ADMIN
+  RISTORATORE
+}
