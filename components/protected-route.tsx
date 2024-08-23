@@ -1,12 +1,14 @@
+"use client";
 import React from 'react';
 import { useRouter } from 'next/navigation'
-import {auth} from "@/auth";
 import {Button} from "@/components/ui/button";
+import { useSession } from 'next-auth/react';
 
 const ProtectedRoute: React.FC = () => {
     const router = useRouter();
 
-    const { user } = auth();
+    const session = useSession();
+    const user = session.data?.user;
 
     if (!user) {
         return (
