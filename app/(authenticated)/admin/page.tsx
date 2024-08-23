@@ -1,8 +1,8 @@
+"use client";
 
-import { useSession } from "next-auth/react";
-import Log from "@/lib/Log";
 import LogComponent from "@/components/logComponent";
 import {auth} from "@/auth";
+import ProtectedRoute from "@/components/protected-route";
 
 export default  async function Page() {
 
@@ -20,5 +20,5 @@ export default  async function Page() {
             </div>;
     }
 
-    return <p>Please log in to view this page.</p>;
+    return <>no auth</>;
 }

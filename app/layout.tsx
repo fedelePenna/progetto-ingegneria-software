@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils"
 import {ReactNode} from "react";
 import {ThemeProvider} from "@/components/theme-provider";
 import {SessionProvider} from "next-auth/react";
+import NextTopLoader from 'nextjs-toploader';
+
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,6 +35,7 @@ export default function RootLayout({
             )}
         >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+<NextTopLoader/>
           <div className="relative flex min-h-screen flex-col">
             <div className="flex-1">{children}</div>
           </div>

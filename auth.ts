@@ -65,7 +65,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 if (!user || !(await bcrypt.compare(credentials.password, user.password!))) {
                     return null;
                 }
-                console.log(user)
                 await logEvent('[LOGIN]: success', {
                     user: user.username,
                     role: user.ruolo
@@ -78,9 +77,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
         })
     ],
-    pages: {
-        signIn: "/login",
-    },
+
     callbacks:{
         async jwt({ token, user }) {
             if (user) {

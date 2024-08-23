@@ -15,6 +15,7 @@ export default function LogComponent() {
     useEffect(() => {
         const fetchLogs = async () => {
             const response = await fetch('/api/logs');
+            console.log("log response", response)
             const data = await response.json();
             setLogs(data);
         };
