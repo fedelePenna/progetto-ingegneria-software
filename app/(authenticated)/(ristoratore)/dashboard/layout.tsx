@@ -26,6 +26,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
+import { signOut } from "next-auth/react"
+ 
+
 export default function RistoratoreLayout({
   children
 }: {
@@ -142,7 +145,10 @@ export default function RistoratoreLayout({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
+                <DropdownMenuItem>
+
+                <button onClick={() => signOut({ callbackUrl: '/', redirect:true })}>Sign Out</button>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

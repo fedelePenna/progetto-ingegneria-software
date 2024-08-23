@@ -26,6 +26,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { signOut } from "next-auth/react";
 
 export default function DashboardLayout({
   children
@@ -122,7 +123,7 @@ export default function DashboardLayout({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
+                <button onClick={() => signOut({ callbackUrl: '/', redirect:true })}>Sign Out</button>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

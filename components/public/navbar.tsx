@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from '../ui/tabs'
+import { signIn } from 'next-auth/react'
 
 export default function NavBarPublic() {
     const pathname = usePathname()
@@ -36,9 +37,8 @@ export default function NavBarPublic() {
 
                 </Tabs>
           </div>
-          <Link href="/dashboard">
-            <Button>Login</Button>
-          </Link>
+            <Button onClick={()=> signIn("credenziali", {callbackUrl: "/dashboard", redirect: true })}>Login</Button>
+
         </nav>
         </>
       );
