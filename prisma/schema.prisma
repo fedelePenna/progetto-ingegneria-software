@@ -82,7 +82,7 @@ model Cliente {
   id           Int            @id @default(autoincrement())
   nome         String
   cognome      String
-  telefono     Int            @unique
+  telefono     BigInt            @unique
   email        String         @unique
   dataNascita  DateTime?
   consenso     Boolean        @default(false)

@@ -7,8 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
 import NextTopLoader from 'nextjs-toploader';
 import { AppProps } from "next/app";
-import NavBarPublic from "@/components/public/navbar";
-
+import { Toaster } from '@/components/ui/toaster'
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -44,6 +43,7 @@ export default function RootLayout({
 
                 
               </div>
+              <Toaster />
 
             </ThemeProvider>
           </body>

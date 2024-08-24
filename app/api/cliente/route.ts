@@ -37,11 +37,11 @@ export async function POST(req: NextRequest) {
             data: {
                 nome,
                 cognome,
-                telefono,
+                telefono: parseInt(telefono),
                 email,
                 dataNascita,
                 consenso,
-                ristoranteId,
+                ristoranteId: parseInt(ristoranteId),
             },
         });
         console.log('POST New Client:', nuovoCliente);
