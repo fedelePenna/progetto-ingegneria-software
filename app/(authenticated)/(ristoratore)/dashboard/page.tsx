@@ -1,22 +1,26 @@
 "use client";
 
-import {auth} from "@/auth";
 import ProtectedRoute from "@/components/protected-route";
-import { Ruolo } from "@prisma/client";
 import { useSession } from "next-auth/react";
 
 export default function Page() {
+  const { data: session, status } = useSession();
 
-    const session = useSession();
-
-
-    if (!session.data?.user || session.data?.user.role!==Ruolo.RISTORATORE) {
-        return <ProtectedRoute />;
-    }
-
-    return(
-        <>
-            <div>PAgina ristoratore</div>
-        </>
+  if (status === "loading") {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div>Loading...</div> {/* Puoi aggiungere un indicatore di caricamento qui */}
+      </div>
     );
+  }
+
+  if (!session?.user || session.user.role !== "RISTORATORE") {
+    return <ProtectedRoute />;
+  }
+
+  return (
+    <div>
+      <div>Pagina ristoratore</div>
+    </div>
+  );
 }
