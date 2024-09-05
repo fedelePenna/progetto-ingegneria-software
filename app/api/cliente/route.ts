@@ -21,7 +21,7 @@ export async function GET(req: NextRequest){
     }
 }
 
-// Handler per la richiesta POST per creare un nuovo cliente
+// Handler per la richiesta POST per creare o aggiornare un cliente
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
@@ -33,8 +33,19 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ status: 400, error: "Missing required fields" });
         }
 
-        const nuovoCliente = await prisma.cliente.create({
-            data: {
+        const cliente = await prisma.cliente.upsert({
+            where: {
+                telefono: parseInt(telefono), // Cerca il cliente in base al numero di telefono
+            },
+            update: {
+                nome,
+                cognome,
+                email,
+                dataNascita,
+                consenso,
+                ristoranteId: parseInt(ristoranteId),
+            },
+            create: {
                 nome,
                 cognome,
                 telefono: parseInt(telefono),
@@ -44,11 +55,11 @@ export async function POST(req: NextRequest) {
                 ristoranteId: parseInt(ristoranteId),
             },
         });
-        console.log('POST New Client:', nuovoCliente);
+        console.log('POST Upsert Client:', cliente);
 
-        return NextResponse.json({ status: 201, data: nuovoCliente });
+        return NextResponse.json({ status: 201, data: cliente });
     } catch (error) {
         console.error('POST Error:', error);
-        return NextResponse.json({  message: "Error creating new client", status: 500 });
+        return NextResponse.json({ message: "Error creating or updating client", status: 500 });
     }
 }
