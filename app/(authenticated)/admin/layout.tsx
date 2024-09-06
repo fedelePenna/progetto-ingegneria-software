@@ -26,13 +26,24 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { Ruolo } from "@prisma/client";
+import ProtectedRoute from "@/components/protected-route";
 
 export default function DashboardLayout({
   children
 }: {
   children: React.ReactNode
 }) {
+
+
+  const session = useSession();
+    
+
+    if(!session.data?.user || session.data.user.role!==Ruolo.ADMIN){
+        return <><ProtectedRoute/></>
+    }
+
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">

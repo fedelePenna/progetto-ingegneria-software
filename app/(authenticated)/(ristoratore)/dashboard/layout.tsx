@@ -26,7 +26,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
-import { signOut } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
+import ProtectedRoute from "@/components/protected-route";
+import { Ruolo } from "@prisma/client";
  
 
 export default function RistoratoreLayout({
@@ -34,6 +36,25 @@ export default function RistoratoreLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div>Loading...</div> {/* Puoi aggiungere un indicatore di caricamento qui */}
+      </div>
+    );
+  }
+
+  if (!session?.user && status === "unauthenticated") {
+    return <ProtectedRoute />;
+  }
+
+  if(status === "authenticated" && session?.user.role !== Ruolo.RISTORATORE){
+    return <ProtectedRoute />;
+  }
+
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
@@ -153,7 +174,7 @@ export default function RistoratoreLayout({
             </DropdownMenu>
           </div>
         </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
+        <main className="flex flex-1 flex-col gap-4">
           {children}
         </main>
       </div>
