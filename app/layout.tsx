@@ -35,7 +35,7 @@ export default function RootLayout({
               fontSans.variable
             )}
           >
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
               <NextTopLoader />
               <div className="relative flex min-h-screen flex-col">
                 
