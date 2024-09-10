@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6518bd1-974d-4fda-bea4-33bebb3fb67a" name="Changes" comment="" />
+    <list default="true" id="e6518bd1-974d-4fda-bea4-33bebb3fb67a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/menu/AreaCRUD.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/menu/CategoryCRUD.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/menu/DishCRUD.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/menu/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/menu/associa/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/menu/categoria/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/categoria/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,13 +53,13 @@
     "com.google.cloudcode.ide_session_index": "20240629_0002",
     "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/fedelepenna/IdeaProjects/progetto-ing-oft/app/api/menu/pietanza/[id]",
+    "last_opened_file_path": "C:/Users/Fedele/IdeaProjects/progetto-ing-oft",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "C:\\Users\\Fedele\\IdeaProjects\\progetto-ing-oft\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -64,6 +75,14 @@
       <recent name="$PROJECT_DIR$/app/(authenticated)" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19072.14" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19072.14" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,6 +95,7 @@
       <workItem from="1719696976621" duration="3502000" />
       <workItem from="1724399993088" duration="202000" />
       <workItem from="1724402136661" duration="1203000" />
+      <workItem from="1725997909297" duration="6041000" />
     </task>
     <servers />
   </component>
