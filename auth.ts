@@ -82,6 +82,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
         })
     ],
+    pages: {
+        error: "/error",
+        signIn: "/signin",
+    },
 
     callbacks:{
         async jwt({ token, user }) {
@@ -96,5 +100,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
             return session;
         },
+        async signIn({user}){
+            if(user.role==='ADMIN'){
+                return true;
+            }
+            else{
+                const utente = await prisma.user.findUnique({
+                    where: {id: parseInt(user.id)}
+                })
+                console.log(utente)
+                if(utente.statoAttivo) return true;
+                else return false;
+            }
+        }
     }
 })

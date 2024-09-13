@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6518bd1-974d-4fda-bea4-33bebb3fb67a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/(authenticated)/admin/users/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(public)/signin/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/users/[id]/route.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/users/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/error/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/menu/AreaCRUD.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/menu/AreaCRUD.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/logs/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/logs/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/menu/areaCompetenza/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/areaCompetenza/[id]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/menu/areaCompetenza/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/areaCompetenza/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/menu/associa/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/associa/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/menu/categoria/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/categoria/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/menu/pietanza/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/pietanza/[id]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/menu/pietanza/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/pietanza/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/prenotazione/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/prenotazione/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authenticated)/admin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/admin/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/logComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/logComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -62,7 +60,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.google.cloudcode.ide_session_index": "20240629_0002",
-    "git-widget-placeholder": "feature/logs",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Fedele/IdeaProjects/progetto-ing-oft",
     "node.js.detected.package.eslint": "true",
@@ -109,6 +107,7 @@
       <workItem from="1725997909297" duration="6041000" />
       <workItem from="1726066571829" duration="9485000" />
       <workItem from="1726151284131" duration="7688000" />
+      <workItem from="1726237330678" duration="4458000" />
     </task>
     <servers />
   </component>
