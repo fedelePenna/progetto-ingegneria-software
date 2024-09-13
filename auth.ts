@@ -64,6 +64,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 });
                 console.log(await bcrypt.hash(credentials.password, 10))
                 if (!user || !(await bcrypt.compare(credentials.password, user.password!))) {
+                    await logEvent('[LOGIN]: error', {
+                        user: user ? user.username : 'user inesistente',
+                        details: user ? 'Tentativo con password errata' : ''
+                    })
                     return null;
                 }
                 await logEvent('[LOGIN]: success', {

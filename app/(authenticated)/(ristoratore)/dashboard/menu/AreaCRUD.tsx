@@ -101,12 +101,12 @@ export default function AreaCRUD() {
         }
     }
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (id: number) => {
         try {
             await deleteArea(id)
             setAreas(areas.filter(area => area.id !== id))
             toast({ title: "Area eliminata con successo", description: "L'area è stata rimossa." })
-        } catch (error) {
+        } catch (error: any) {
             toast({ title: "Errore", description: error.message, variant: "destructive" })
         }
     }

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {prisma} from "@/auth";
 
-export async function GET(req: NextRequest, { params }: { params: {id: string}}){
+export async function GET(req: NextRequest, { params }: { params: {id: string}}){
     const id = parseInt(params.id);
 
     if (isNaN(id)) {

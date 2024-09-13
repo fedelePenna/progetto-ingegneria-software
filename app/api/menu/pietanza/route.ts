@@ -1,7 +1,8 @@
 
 import {NextRequest, NextResponse} from "next/server";
-import {prisma} from "@/auth";
+import {auth, prisma} from "@/auth";
 import {Pietanza} from "@prisma/client";
+import {logEvent} from "@/lib/utils";
 
 export async function GET(req: NextRequest, res: NextResponse){
     try{
@@ -21,6 +22,11 @@ export async function GET(req: NextRequest, res: NextResponse){
 
 export async function POST(req: NextRequest) {
     try {
+        const session = await auth();
+        if (!session?.user || session?.user?.role !== "RISTORATORE") {
+            await logEvent(`[API] ${ req.method +' '+ req.url}`, { details: 'not auth', ip: req.headers.get('X-Forwarded-For') });
+            return NextResponse.json({ status: 403, message: "No auth" }, { status: 403 });
+        }
         const body = await req.json();
         const { nome, descrizione, prezzo, etichetta, categoriaId } = body;
 

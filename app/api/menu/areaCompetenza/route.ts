@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/auth";
+import {auth, prisma} from "@/auth";
 import { AreaCompentenza } from "@prisma/client";
+import {logEvent} from "@/lib/utils";
 
 // Handler per la richiesta GET per ottenere tutte le aree di competenza
 export async function GET(req: NextRequest) {
@@ -10,7 +11,6 @@ export async function GET(req: NextRequest) {
                 nome: 'asc' // Ordina le aree di competenza per nome in ordine ascendente
             }
         });
-        console.log('GET Aree Competenze:', areeCompetenze);
         if (areeCompetenze.length === 0) {
             return NextResponse.json({ status: 404, message: "No areas of expertise found" });
         }
@@ -24,9 +24,13 @@ export async function GET(req: NextRequest) {
 // Handler per la richiesta POST per creare una nuova area di competenza
 export async function POST(req: NextRequest) {
     try {
+        const session = await auth();
+        if (!session?.user || session?.user?.role !== "RISTORATORE") {
+            await logEvent(`[API] ${ req.method +' '+ req.url}`, { details: 'not auth', ip: req.headers.get('X-Forwarded-For') });
+            return NextResponse.json({ status: 403, message: "No auth" }, { status: 403 });
+        }
         const body = await req.json();
         const { nome, ristoranteId } = body;
-        console.log('POST Body:', body);
 
         // Validazione dei dati
         if (!nome || !ristoranteId) {
