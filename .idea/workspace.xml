@@ -6,10 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e6518bd1-974d-4fda-bea4-33bebb3fb67a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/menu/AreaCRUD.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/menu/AreaCRUD.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/logs/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/logs/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/prenotazione/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/prenotazione/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/menu/areaCompetenza/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/areaCompetenza/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/menu/areaCompetenza/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/areaCompetenza/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/menu/associa/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/associa/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/menu/categoria/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/categoria/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/menu/pietanza/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/pietanza/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/menu/pietanza/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/menu/pietanza/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/prenotazione/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/prenotazione/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/logComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/logComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/public/booking-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/public/booking-form.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +29,15 @@
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
       </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+    <option name="myAllFileTypesSelected" value="false" />
+    <option name="mySelectedFileTypes">
+      <set>
+        <option value="Prisma" />
+      </set>
     </option>
   </component>
   <component name="Git.Settings">
@@ -42,22 +58,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20240629_0002&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/form&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Fedele/IdeaProjects/progetto-ing-oft&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Fedele\\IdeaProjects\\progetto-ing-oft\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.google.cloudcode.ide_session_index": "20240629_0002",
+    "git-widget-placeholder": "feature/logs",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Fedele/IdeaProjects/progetto-ing-oft",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Fedele\\IdeaProjects\\progetto-ing-oft\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/api/menu/pietanza/[id]" />
@@ -92,7 +108,7 @@
       <workItem from="1724402136661" duration="1203000" />
       <workItem from="1725997909297" duration="6041000" />
       <workItem from="1726066571829" duration="9485000" />
-      <workItem from="1726151284131" duration="1934000" />
+      <workItem from="1726151284131" duration="7688000" />
     </task>
     <servers />
   </component>

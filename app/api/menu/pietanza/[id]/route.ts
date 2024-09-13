@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/auth";
+import {auth, prisma} from "@/auth";
+import {logEvent} from "@/lib/utils";
 
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
     try {
+        const session = await auth();
+        if (!session?.user || session?.user?.role !== "RISTORATORE") {
+            await logEvent(`[API] ${ req.method +' '+ req.url}`, { details: 'not auth', ip: req.headers.get('X-Forwarded-For') });
+            return NextResponse.json({ status: 403, message: "No auth" }, { status: 403 });
+        }
         const id = parseInt(params.id, 10);
         const body = await req.json();
         const { nome, descrizione, prezzo, etichetta, categoriaId } = body;
@@ -32,6 +38,11 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     try {
+        const session = await auth();
+        if (!session?.user || session?.user?.role !== "RISTORATORE") {
+            await logEvent(`[API] ${ req.method +' '+ req.url}`, { details: 'not auth', ip: req.headers.get('X-Forwarded-For') });
+            return NextResponse.json({ status: 403, message: "No auth" }, { status: 403 });
+        }
         const id = parseInt(params.id, 10);
 
         const pietanza = await prisma.pietanza.delete({

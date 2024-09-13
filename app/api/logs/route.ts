@@ -1,38 +1,47 @@
-import { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import Log from "@/lib/Log"; // Assumendo che tu abbia già il modello Log configurato
-import {connectToMongoDB} from "@/lib/mongodb"; // Assumendo che tu abbia una funzione per connetterti al database
+import {NextApiRequest, NextApiResponse} from "next";
+import {connectToMongoDB} from "@/lib/mongodb";
+import Log from "@/lib/Log";
+import {NextResponse} from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET(request: Request) {
     try {
         await connectToMongoDB();
 
-        // Ottieni i parametri di query dall'URL
+        // Estrai i parametri di query dalla richiesta
         const { searchParams } = new URL(request.url);
-        const page = searchParams.get('page') || '1';
-        const limit = searchParams.get('limit') || '10';
-        const sort = searchParams.get('sort') || 'desc';
 
-        // Converti i parametri in numeri interi
-        const pageNumber = parseInt(page, 10);
-        const limitNumber = parseInt(limit, 10);
+        const page = parseInt(searchParams.get('page') || '1', 10);
+        const limit = parseInt(searchParams.get('limit') || '10', 10);
+        const eventType = searchParams.get('eventType') || '';
+        const details = searchParams.get('details') || '';
+        const sortOrder = searchParams.get('sortOrder') || 'desc';
 
-        // Trova e ordina i log per timestamp
-        const logs = await Log.find()
-            .sort({ timestamp: sort === "asc" ? 1 : -1 }) // Ordinamento per timestamp
-            .skip((pageNumber - 1) * limitNumber)         // Skippa i documenti in base alla pagina
-            .limit(limitNumber);                          // Limita il numero di documenti
+        const sortDirection = sortOrder === 'asc' ? 1 : -1;
 
-        const totalLogs = await Log.countDocuments();   // Conta il numero totale di log
+        const query: any = {
+            eventType: { $regex: new RegExp(eventType, 'i') },
+        };
 
-        return NextResponse.json({
-            logs,
-            total: totalLogs,          // Numero totale di log
-            page: pageNumber,          // Pagina corrente
-            limit: limitNumber,        // Limite per pagina
-        });
+// Se il filtro `details` è specificato, puoi cercare su campi noti dentro `details`
+        if (details) {
+            query['details.user'] = { $regex: new RegExp(details, 'i') }; // Ad esempio, cerchiamo dentro 'details.user'
+        }
+
+        console.log(query);
+
+// Recupera i log con paginazione e ordinamento
+        const logs = await Log.find(query)
+            .sort({ timestamp: sortDirection })
+            .skip((page - 1) * limit)
+            .limit(limit);
+
+
+        // Conta il numero totale di documenti per la paginazione
+        const totalLogs = await Log.countDocuments(query);
+
+        return NextResponse.json({ logs, total: totalLogs }, { status: 200 });
     } catch (error) {
-        console.error("Errore nel recupero dei log:", error);
-        return NextResponse.json({ status: 500, message: "Errore interno del server" });
+        console.error('Errore nel recupero dei log:', error);
+        return NextResponse.json({ error: 'Errore nel recupero dei log' }, { status: 500 });
     }
 }

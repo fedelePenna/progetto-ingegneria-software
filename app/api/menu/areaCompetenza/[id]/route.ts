@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/auth";
+import {auth, prisma} from "@/auth";
+import {logEvent} from "@/lib/utils";
 
 
 
@@ -35,6 +36,11 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
     try {
+        const session = await auth();
+        if (!session?.user || session?.user?.role !== "RISTORATORE") {
+            await logEvent(`[API] ${ req.method +' '+ req.url}`, { details: 'not auth', ip: req.headers.get('X-Forwarded-For') });
+            return NextResponse.json({ status: 403, message: "No auth" }, { status: 403 });
+        }
         const id = parseInt(params.id, 10);
         const body = await req.json();
         const { nome, ristoranteId } = body;
@@ -58,15 +64,21 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     try {
+        const session = await auth();
+        if (!session?.user || session?.user?.role !== "RISTORATORE") {
+            await logEvent(`[API] ${ req.method +' '+ req.url}`, { details: 'not auth', ip: req.headers.get('X-Forwarded-For') });
+            return NextResponse.json({ status: 403, message: "No auth" }, { status: 403 });
+        }
+
         const id = parseInt(params.id, 10);
 
-        const areaCompentenza = await prisma.areaCompentenza.delete({
+        await prisma.areaCompentenza.delete({
             where: { id },
         });
 
-        return NextResponse.json({ status: 200, message: "Area of expertise deleted successfully" });
+        return NextResponse.json({ status: 200, message: "Area of expertise deleted successfully" }, { status: 200 });
     } catch (e) {
         console.error('DELETE Error:', e);
-        return NextResponse.json({ status: 500, message: "Error deleting area of expertise" });
+        return NextResponse.json({ status: 500, message: "Error deleting area of expertise" }, { status: 500 });
     }
 }

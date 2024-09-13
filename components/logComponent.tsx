@@ -13,7 +13,7 @@ interface ILog {
     timestamp: Date;
 }
 
-// Funzione API per ottenere i log reali
+// Funzione API reale per ottenere i log dall'API
 const fetchLogs = async (page: number, limit: number, eventTypeFilter: string, detailsFilter: string, sortOrder: 'asc' | 'desc'): Promise<{ logs: ILog[], total: number }> => {
     const query = new URLSearchParams({
         page: page.toString(),
@@ -56,16 +56,7 @@ export default function VisualizzatoreLog() {
     };
 
     useEffect(() => {
-        // Fetch iniziale
         fetchData();
-
-        // Imposta l'intervallo di aggiornamento ogni 30 secondi
-        const intervalId = setInterval(() => {
-            fetchData();
-        }, 30000);
-
-        // Pulisce l'intervallo quando il componente viene smontato
-        return () => clearInterval(intervalId);
     }, [page, eventTypeFilter, detailsFilter, sortOrder]);
 
     const totalPages = useMemo(() => Math.ceil(total / limit), [total, limit]);
@@ -87,7 +78,7 @@ export default function VisualizzatoreLog() {
                     className="max-w-xs"
                 />
                 <Input
-                    placeholder="Filtra per Dettagli"
+                    placeholder="Filtra per User"
                     value={detailsFilter}
                     onChange={(e) => setDetailsFilter(e.target.value)}
                     className="max-w-xs"
@@ -116,12 +107,12 @@ export default function VisualizzatoreLog() {
                         <TableRow>
                             <TableCell colSpan={3} className="text-center">Caricamento...</TableCell>
                         </TableRow>
-                    ) : Array.isArray(logs) && logs.length === 0 ? (
+                    ) : logs.length === 0 ? (
                         <TableRow>
                             <TableCell colSpan={3} className="text-center">Nessun log trovato</TableCell>
                         </TableRow>
                     ) : (
-                        logs?.map((log) => (
+                        logs.map((log) => (
                             <TableRow key={log.id}>
                                 <TableCell>{log.eventType}</TableCell>
                                 <TableCell>
@@ -132,10 +123,7 @@ export default function VisualizzatoreLog() {
                         ))
                     )}
                 </TableBody>
-
             </Table>
-
-            {error && <div className="text-red-500">{error}</div>}
 
             <div className="flex justify-between items-center">
                 <div>
@@ -147,5 +135,5 @@ export default function VisualizzatoreLog() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
