@@ -35,9 +35,14 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         const {copertiAdulti, copertiBambini, data, allergie, numeroPasseggini, numeroSeggiolini, occasioneVisita, clienteId, tavoloId} = body;
 
         // Validazione dei dati
-        if (!copertiAdulti || !copertiBambini || !data || !clienteId || !tavoloId) {
-         return NextResponse.json({ status: 400, error: "Missing required fields" });
-        }
+        if (
+            copertiAdulti === undefined ||
+            copertiBambini === undefined ||
+            !data ||
+            !clienteId
+        ) {
+          return NextResponse.json({ status: 400, error: "Missing required fields" });
+        }        
 
         const updatedPrenotazione = await prisma.prenotazione.update({
             where: {id:id},
