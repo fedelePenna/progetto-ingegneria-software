@@ -199,13 +199,13 @@ export default function ReservationForm() {
 
       const result = await response.json();
 
-      if (!response.ok) {
+      if (result.status !== 200) {
         // Se c'è stato un errore, impostiamo il messaggio di errore da mostrare all'utente
         setError(result.error || "Errore nella prenotazione.");
         return;
       }
 
-      if (result.success) {
+      if (result.status === 200) {
         setIsBookingComplete(true);
       } else {
         toast({ title: "Errore", description: result.message, variant: "destructive" });
