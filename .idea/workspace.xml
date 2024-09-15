@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e6518bd1-974d-4fda-bea4-33bebb3fb67a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/public/booking-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/public/booking-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/clienti/ClienteCRUD.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/clienti/ClienteCRUD.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

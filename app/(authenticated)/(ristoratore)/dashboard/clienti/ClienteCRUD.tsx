@@ -44,7 +44,7 @@ export default function ClienteCRUD(){
         telefono: '',
         email: '',
         dataNascita: null as Date | null,
-        consenso: false 
+        consenso: false
     })
     const { toast } = useToast()
     const [isLoading, setIsLoading] = useState(true)
@@ -69,7 +69,7 @@ export default function ClienteCRUD(){
         const data = await res.json();
         return data.data;
     };
-    
+
     const updateCliente = async (id) => {
         const res = await fetch(`/api/cliente/${id}`, {
             method: 'PUT',
@@ -313,7 +313,13 @@ export default function ClienteCRUD(){
                             <TableCell>{cliente.cognome}</TableCell>
                             <TableCell>{cliente.telefono}</TableCell>
                             <TableCell>{cliente.email}</TableCell>
-                            <TableCell>{cliente.dataNascita}</TableCell>
+                            <TableCell>
+                                {new Date(cliente.dataNascita).toLocaleDateString('it-IT', {
+                                    day: '2-digit',
+                                    month: 'short',
+                                    year: 'numeric',
+                                })}
+                            </TableCell>
                             <TableCell>
                                 <div className="flex space-x-2">
                                     <Button variant="outline" size="sm" onClick={() => handleEdit(cliente)}>Modifica</Button>
@@ -440,6 +446,6 @@ export default function ClienteCRUD(){
                 </DialogContent>
             </Dialog>
         </div>
-        
+
     )
 }
