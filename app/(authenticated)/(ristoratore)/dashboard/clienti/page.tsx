@@ -1,22 +1,10 @@
-"use client";
+'use client'
 
-import ProtectedRoute from "@/components/protected-route";
-import ClientiComponent from "@/components/ristoratore/clienti";
-import { Ruolo } from "@prisma/client";
-import { useSession } from "next-auth/react";
+import { useState } from 'react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import ClienteCRUD from '@/app/(authenticated)/(ristoratore)/dashboard/clienti/ClienteCRUD';
 
-export default function Page() {
-
-    const session = useSession();
-
-
-    if (!session.data?.user || session.data?.user.role!==Ruolo.RISTORATORE) {
-        return <ProtectedRoute />;
-    }
-
-    return(
-        <>
-            <ClientiComponent />
-        </>
-    );
+export default function CRUDTabs() {
+    return (<ClienteCRUD/>)
 }
