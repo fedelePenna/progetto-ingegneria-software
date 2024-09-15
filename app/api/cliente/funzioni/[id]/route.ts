@@ -13,7 +13,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string 
             where: { clienteId:id },
         });
 
-        if (!prenotazioni) {
+        if (prenotazioni.length === 0) {
             return NextResponse.json({ status: 404, message: "Reservations not found" });
         }
 

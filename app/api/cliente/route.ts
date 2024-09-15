@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
         console.log('POST Body:', body);
 
         // Validazione dei dati
-        if (!nome || !cognome || !telefono || !email || !ristoranteId) {
+        if (!nome || !cognome || !telefono || !email) {
             return NextResponse.json({ status: 400, error: "Missing required fields" });
         }
 
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
                 email,
                 dataNascita,
                 consenso,
-                ristoranteId: parseInt(ristoranteId),
+                ristoranteId: 1,
             },
             create: {
                 nome,
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
                 email,
                 dataNascita,
                 consenso,
-                ristoranteId: parseInt(ristoranteId),
+                ristoranteId: 1,
             },
         });
 

@@ -36,7 +36,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         const { nome, cognome, telefono, email, dataNascita, consenso, ristoranteId } = body;
 
         // Validazione dei dati
-        if (!nome || !cognome || !telefono || !email || !dataNascita || !consenso || !ristoranteId) {
+        if (!nome || !cognome || !telefono || !email || !consenso) {
             return NextResponse.json({ status: 400, error: "Missing required fields" });
         }
 
@@ -45,16 +45,21 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
             data: {
                 nome,
                 cognome,
-                telefono,
+                telefono: parseInt(telefono),
                 email,
-                dataNascita,
+                dataNascita: new Date(dataNascita),
                 consenso,
-                ristoranteId,
+                ristoranteId: 1,
             },
         });
 
+        const clienteSerialized = {
+            ...updatedCliente,
+            telefono: updatedCliente.telefono.toString(),  // Converti BigInt a stringa
+        };
+
   
-        return NextResponse.json({status: 200, data: updatedCliente});
+        return NextResponse.json({status: 200, data: clienteSerialized});
     } catch (error) {
         console.error('PUT Error:', error);
         return NextResponse.json({ status: 500, message: "Error updating client" });
