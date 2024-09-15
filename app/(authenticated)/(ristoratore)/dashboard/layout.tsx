@@ -73,17 +73,6 @@ export default function RistoratoreLayout({
                             : "text-muted-foreground hover:text-primary"
                     }`}
                 >
-                  <Home className="h-4 w-4" />
-                  Dashboard
-                </Link>
-                <Link
-                    href="/dashboard/bookings"
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
-                        isActive("/dashboard/bookings")
-                            ? "bg-muted text-foreground"
-                            : "text-muted-foreground hover:text-primary"
-                    }`}
-                >
                   <Book className="h-4 w-4" />
                   Prenotazioni
                 </Link>
@@ -136,21 +125,11 @@ export default function RistoratoreLayout({
                     <Package2 className="h-6 w-6" />
                     <span className="">BookEat</span>
                   </Link>
+
                   <Link
                       href="/dashboard"
                       className={`mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 transition-all ${
                           isActive("/dashboard")
-                              ? "bg-muted text-foreground"
-                              : "text-muted-foreground hover:text-foreground"
-                      }`}
-                  >
-                    <Home className="h-5 w-5" />
-                    Dashboard
-                  </Link>
-                  <Link
-                      href="/dashboard/bookings"
-                      className={`mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 transition-all ${
-                          isActive("/dashboard/bookings")
                               ? "bg-muted text-foreground"
                               : "text-muted-foreground hover:text-foreground"
                       }`}

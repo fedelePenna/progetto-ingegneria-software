@@ -499,16 +499,17 @@ const handleDelete = async (id: number) => {
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead>NomeCliente</TableHead>
-                    <TableHead>CognomeCliente</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>CopertiAdulti</TableHead>
-                    <TableHead>CopertiBambini</TableHead>
+                    <TableHead>Nome</TableHead>
+                    <TableHead>Cognome</TableHead>
+
+                    <TableHead>Adulti</TableHead>
+                    <TableHead>Bambini</TableHead>
                     <TableHead>Data</TableHead>
                     <TableHead>Allergie</TableHead>
-                    <TableHead>NumeroPasseggini</TableHead>
-                    <TableHead>NumeroSeggiolini</TableHead>
-                    <TableHead>OccasioneVisita</TableHead>
+                    <TableHead>N.Pass</TableHead>
+                    <TableHead>N.Segg</TableHead>
+                    <TableHead>Occasione</TableHead>
+                    <TableHead>Azioni</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -516,7 +517,7 @@ const handleDelete = async (id: number) => {
                     <TableRow key={prenotazione.id}>
                         <TableCell>{prenotazione.nomeCliente}</TableCell>
                         <TableCell>{prenotazione.cognomeCliente}</TableCell>
-                        <TableCell>{prenotazione.email}</TableCell>
+
                         <TableCell>{prenotazione.copertiAdulti}</TableCell>
                         <TableCell>{prenotazione.copertiBambini}</TableCell>
                         <TableCell>{new Date(prenotazione.data).toLocaleDateString('it-IT', {

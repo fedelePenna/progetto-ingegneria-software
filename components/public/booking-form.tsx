@@ -27,6 +27,7 @@ export default function ReservationForm() {
     highChairs: 0,
     dateOfBirth: null as Date | null,
     marketingConsent: false,
+    clienteId: 1,
   });
   const [availableDates, setAvailableDates] = useState<Date[]>([]);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
@@ -192,7 +193,7 @@ export default function ReservationForm() {
           allergie: formData.allergies,
           numeroPasseggini: formData.strollers,
           numeroSeggiolini: formData.highChairs,
-          clienteId: 1, // Qui dovresti sostituire con l'id del cliente ottenuto dal primo step
+          clienteId: formData.clienteId, // Qui dovresti sostituire con l'id del cliente ottenuto dal primo step
           tavoloId: 1, // Dovresti ottenere il tavoloId dal backend
         }),
       });

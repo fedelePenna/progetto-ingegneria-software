@@ -6,5 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import ClienteCRUD from '@/app/(authenticated)/(ristoratore)/dashboard/clienti/ClienteCRUD';
 
 export default function CRUDTabs() {
-    return (<ClienteCRUD/>)
+    return (
+      <div className="container mx-auto px-4 py-8">
+          <ClienteCRUD/>
+      </div>
+    );
 }

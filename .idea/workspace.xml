@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e6518bd1-974d-4fda-bea4-33bebb3fb67a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/clienti/ClienteCRUD.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/clienti/ClienteCRUD.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/bookings/PrenotazioneCRUD.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/bookings/PrenotazioneCRUD.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/clienti/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/clienti/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(authenticated)/(ristoratore)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/public/booking-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/public/booking-form.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,14 +71,6 @@
       <recent name="$PROJECT_DIR$/app/(authenticated)" />
     </key>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19072.14" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19072.14" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -91,6 +87,7 @@
       <workItem from="1726066571829" duration="9485000" />
       <workItem from="1726151284131" duration="7688000" />
       <workItem from="1726237330678" duration="4458000" />
+      <workItem from="1726422532998" duration="172000" />
     </task>
     <servers />
   </component>
